@@ -26,8 +26,7 @@
 		"debug": "~3.1.0",
 		"ejs": "~2.5.7",
 		"express": "~4.16.2",
-		"morgan": "~1.9.0",
-		"serve-favicon": "~2.4.5"
+		"morgan": "~1.9.0"
 	},
 	"devDependencies": {
 		"js-beautify": "~1.7.5",
