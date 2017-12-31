@@ -1,7 +1,7 @@
 {
 	"name": "jasyp-c4p",
 	"version": "0.0.1",
-	"author": "Germán Martínez Maldonado (germaaan@gmail.com)",
+	"author": "Germán Martínez Maldonado (germaaan@protonmail.com)",
 	"description": "Aplicación para gestionar las solicitudes para las JASYP",
 	"bugs": {
 		"url": "https://github.com/Interferencias/jasyp_c4p/issues"
@@ -23,10 +23,12 @@
 	"dependencies": {
 		"body-parser": "~1.18.2",
 		"cookie-parser": "~1.4.3",
-		"debug": "~3.1.0",
 		"ejs": "~2.5.7",
 		"express": "~4.16.2",
-		"morgan": "~1.9.0"
+		"method-override": "^2.3.10",
+		"morgan": "~1.9.0",
+		"node-sass": "~4.7.2",
+		"serve-favicon": "^2.4.5"
 	},
 	"devDependencies": {
 		"js-beautify": "~1.7.5",
@@ -42,9 +44,11 @@
 		"start": "pm2 start app.js -i 2 && pm2 save",
 		"stop": "pm2 stop app",
 		"restart": "pm2 restart app.js && pm2 save",
-		"check": "npm-check -u",
 		"save": "pm2 save",
-		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js app/*.js app/routes/*.js config/*.js config/*.json test/*.js test/*/*.js src/js/*.js",
-		"jshint": "jshint *.json *.js app/*.js app/routes/*.js config/*.js config/*.json test/*.js src/js/*.js"
+		"libs": "bower install",
+		"sass": "node-sass public/style/scss/*.scss -o public/style/css",
+		"check": "npm-check -u",
+		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js app/*.js",
+		"jshint": "jshint *.json *.js app/*.js"
 	}
 }
