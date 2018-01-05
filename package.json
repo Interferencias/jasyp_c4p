@@ -2,7 +2,6 @@
 	"name": "jasyp-c4p",
 	"version": "0.0.1",
 	"author": "Germán Martínez Maldonado (germaaan@protonmail.com)",
-	"description": "Aplicación para gestionar las solicitudes para las JASYP",
 	"bugs": {
 		"url": "https://github.com/Interferencias/jasyp_c4p/issues"
 	},
@@ -12,7 +11,7 @@
 		"url": "https://github.com/Interferencias/jasyp_c4p.git"
 	},
 	"homepage": "https://interferencias.tech/jasyp/",
-	"main": "app.js",
+	"main": "bin/www",
 	"os": [
 		"linux"
 	],
