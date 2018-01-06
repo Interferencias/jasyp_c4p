@@ -30,7 +30,8 @@
 		"method-override": "~2.3.10",
 		"morgan": "~1.9.0",
 		"node-sass": "~4.7.2",
-		"serve-favicon": "~2.4.5"
+		"serve-favicon": "~2.4.5",
+		"sqlite": "~2.9.0"
 	},
 	"devDependencies": {
 		"js-beautify": "~1.7.5",
