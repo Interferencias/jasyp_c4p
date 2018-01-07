@@ -61,4 +61,4 @@ package-lock.json
 public/lib
 public/style/css
 *~
-database.sqlite
+db.development.sqlite

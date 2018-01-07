@@ -1,14 +1,16 @@
-var models  = require('../models');
+var models = require('../models');
 var express = require('express');
 var router = express.Router();
-var debug = require('debug')('jasyp-c4p:route:papers')
 
 router.post('/create', function(req, res) {
-  models.User.create({
-    username: req.body.username
-  }).then(function() {
-    res.redirect('/');
-  });
+	models.Paper.create({
+		title: req.body.title,
+		name: req.body.name,
+		email: req.body.email,
+		abstract: req.body.abstract
+	}).then(function() {
+		res.redirect('/');
+	});
 });
 
 module.exports = router;
