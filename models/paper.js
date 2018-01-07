@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   var Paper = sequelize.define('Paper', {
     title: DataTypes.STRING(255),

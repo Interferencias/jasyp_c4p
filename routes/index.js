@@ -1,30 +1,10 @@
+var models  = require('../models');
 var express = require('express');
 var router = express.Router();
-var debug = require('debug')('jasyp-c4p:route:papers')
-const papers = require('../lib/papers');
-const Papers = require('../lib/schema/paper');
+var debug = require('debug')('jasyp-c4p:route:index')
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'JASYP C4P' });
-});
-
-router.post('/', function(req, res, next) {
-  const paper = new Paper(req.body);
-  papers.create(paper)
-    .then(paperId => res.render('index', {
-      success: true,
-      paperId
-    }))
-    .catch(err => {
-      debug(err.message, req.body);
-      res.status(400).render('index', {
-        errors: [
-          err.message
-        ],
-        success: false,
-        submission: req.body
-      });
-    })
 });
 
 module.exports = router;
