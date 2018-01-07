@@ -11,13 +11,13 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   const paper = new Paper(req.body);
   papers.create(paper)
-    .then(paperId => res.render('papers', {
+    .then(paperId => res.render('index', {
       success: true,
       paperId
     }))
     .catch(err => {
       debug(err.message, req.body);
-      res.status(400).render('papers', {
+      res.status(400).render('index', {
         errors: [
           err.message
         ],
