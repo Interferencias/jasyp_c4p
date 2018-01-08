@@ -1,14 +1,14 @@
 {
 	"name": "jasyp-c4p",
 	"version": "0.0.1",
-	"author": "Germán Martínez Maldonado (germaaan@protonmail.com)",
-	"bugs": {
-		"url": "https://github.com/Interferencias/jasyp_c4p/issues"
-	},
+	"author": "Germán Martínez Maldonado <germaaan@protonmail.com>",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Interferencias/jasyp_c4p.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Interferencias/jasyp_c4p/issues"
 	},
 	"homepage": "https://interferencias.tech/jasyp/",
 	"main": "bin/www",
@@ -16,31 +16,31 @@
 	"arch": "x64",
 	"private": true,
 	"directories": {
-		"lib": "lib"
+		"lib": "models",
+		"bin": "bin",
+		"doc": "README.md"
 	},
 	"dependencies": {
-		"body-parser": "~1.18.2",
-		"cookie-parser": "~1.4.3",
-		"debug": "~3.1.0",
-		"ejs": "~2.5.7",
-		"express": "~4.16.2",
-		"method-override": "~2.3.10",
-		"morgan": "~1.9.0",
-		"node-sass": "~4.7.2",
-		"sequelize": "^4.29.0",
-		"serve-favicon": "~2.4.5",
-		"sqlite3": "^3.1.13"
+		"body-parser": "^1.18.2",
+		"cookie-parser": "^1.4.3",
+		"debug": "^3.1.0",
+		"ejs": "^2.5.7",
+		"express": "^4.16.2",
+		"morgan": "^1.9.0",
+		"node-sass": "^4.7.2",
+		"sequelize": "^4.29.2",
+		"serve-favicon": "^2.4.5"
 	},
 	"devDependencies": {
-		"js-beautify": "~1.7.5",
-		"jshint": "~2.9.1",
-		"nodemon": "~1.14.8",
-		"npm-check": "~5.5.2",
-		"pm2": "~2.9.1"
+		"js-beautify": "^1.7.5",
+		"jshint": "^2.9.1",
+		"nodemon": "^1.14.9",
+		"npm-check": "^5.5.2",
+		"pm2": "^2.9.1"
 	},
 	"engines": {
-		"node": "~9.2.1",
-		"npm": "~5.6.0"
+		"node": "^9.2.1",
+		"npm": "^5.6.0"
 	},
 	"scripts": {
 		"debug": "nodemon bin/www",
@@ -51,7 +51,7 @@
 		"libs": "bower install",
 		"sass": "node-sass public/style/scss/*.scss -o public/style/css",
 		"check": "npm-check -u",
-		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js app/*.js",
-		"jshint": "jshint *.json *.js app/*.js"
+		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js bin/www config/*.js models/*.js routes/*.js",
+		"jshint": "jshint *.json *.js bin/www config/*.js models/*.js routes/*.js"
 	}
 }
