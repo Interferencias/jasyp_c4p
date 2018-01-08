@@ -7,6 +7,7 @@
 	"license": "GPL-3.0",
 	"private": true,
 	"dependencies": {
-		"bootstrap": "bootstrap-sass#3.3.7"
+		"bootstrap": "bootstrap-sass#3.3.7",
+		"parsley": "parsleyjs#2.8.0"
 	}
 }
