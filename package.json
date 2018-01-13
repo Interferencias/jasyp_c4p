@@ -2,6 +2,7 @@
 	"name": "jasyp-c4p",
 	"version": "0.0.1",
 	"author": "Germán Martínez Maldonado <germaaan@protonmail.com>",
+	"description": "Aplicación para gestionar las solicitudes para las JASYP",
 	"license": "GPL-3.0",
 	"repository": {
 		"type": "git",
@@ -27,7 +28,6 @@
 		"ejs": "^2.5.7",
 		"express": "^4.16.2",
 		"morgan": "^1.9.0",
-		"node-sass": "^4.7.2",
 		"sequelize": "^4.29.2",
 		"serve-favicon": "^2.4.5",
 		"sqlite3": "^3.1.13"
@@ -50,7 +50,6 @@
 		"restart": "pm2 restart app.js && pm2 save",
 		"save": "pm2 save",
 		"libs": "bower install",
-		"sass": "node-sass public/style/scss/*.scss -o public/style/css",
 		"check": "npm-check -u",
 		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js bin/www config/*.js models/*.js routes/*.js",
 		"jshint": "jshint *.json *.js bin/www config/*.js models/*.js routes/*.js"
