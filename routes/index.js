@@ -10,4 +10,19 @@ router.get("/", function(req, res, next) {
 	});
 });
 
+router.get("/create", function(req, res, next) {
+	res.render("create", {
+		title: "JASYP C4P - Crear comunicaciones"
+	});
+});
+
+router.get("/list", function(req, res) {
+	models.Paper.findAll({}).then(function(papers) {
+		res.render("list", {
+			title: "JASYP C4P - Listar comunicaciones",
+			papers: papers
+		});
+	});
+});
+
 module.exports = router;

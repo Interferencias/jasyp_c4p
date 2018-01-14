@@ -1,0 +1,55 @@
+<% include layout %>
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center">
+			<h2>JASYP C4P</h2>
+			<hr>
+		</div>
+		<table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						Título
+					</th>
+					<th>
+						Nombre
+					</th>
+					<th>
+						Email
+					</th>
+					<th>
+						Resumen
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% papers.forEach(function(paper) { %>
+					<tr>
+						<td>
+							<%= paper.id %>
+						</td>
+						<td>
+							<%= paper.title %>
+						</td>
+						<td>
+							<%= paper.name %>
+						</td>
+						<td>
+							<%= paper.email %>
+						</td>
+						<td>
+							<%= paper.abstract %>
+						</td>
+					</tr>
+					<% }); %>
+
+			</tbody>
+		</table>
+	</div>
+	</div>
+
+	<% include footer %>
