@@ -1,4 +1,4 @@
-<% include layout %>
+<% include ../partials/layout %>
 
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">
@@ -30,7 +30,7 @@
 				<% papers.forEach(function(paper) { %>
 					<tr>
 						<td>
-							<%= paper.id %>
+							<a href="/papers/<%= paper.id %>"><%= paper.id %></a>
 						</td>
 						<td>
 							<%= paper.title %>
@@ -52,4 +52,4 @@
 	</div>
 	</div>
 
-	<% include footer %>
+	<% include ../partials/footer %>

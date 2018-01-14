@@ -1,11 +1,10 @@
-<% include layout %>
+<% include partials/layout %>
 
-	<div class="container">
-		<div class="starter-template">
-			<div class="col-md-4 col-md-offset-4 text-center">
-				<h1><%= message %></h1>
-				<h2><%= error.status %></h2>
-				<pre><%= error.stack %></pre>
-			</div>
+	<div class="row">
+		<h1>Error: <%= message %></h1>
+		<h2>Código: <%= error.status %></h2>
+		<pre><%= error.stack %></pre>
+	</div>
+	</div>
 
-			<% include footer %>
+	<% include partials/footer %>
