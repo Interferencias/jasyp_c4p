@@ -1,7 +1,12 @@
 "use strict";
 
-var models = require("../models");
+require('dotenv').config();
+
+var models = require(__dirname + "/../lib/models");
+var transporter = require(__dirname + "/../lib/messenger");
+
 var express = require("express");
+
 var router = express.Router();
 
 router.get("/create", function(req, res, next) {
@@ -17,7 +22,18 @@ router.post("/create", function(req, res) {
 		email: req.body.email,
 		abstract: req.body.abstract
 	}).then(function() {
-		res.redirect("/");
+		transporter.sendMail({
+			to: req.body.name.concat(" <", req.body.email, ">")
+		}, function(error, info) {
+			if (error) {
+				res.render("error", {
+					message: "Error occured, message not sent.",
+					error: error
+				});
+			} else {
+				res.redirect("/papers/list");
+			}
+		});
 	});
 });
 
@@ -57,7 +73,7 @@ router.post("/:paper_id/update", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/");
+		res.redirect("/papers/list");
 	});
 });
 
@@ -67,7 +83,7 @@ router.post("/:paper_id/delete", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/");
+		res.redirect("/papers/list");
 	});
 });
 

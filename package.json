@@ -17,7 +17,7 @@
 	"arch": "x64",
 	"private": true,
 	"directories": {
-		"lib": "models",
+		"lib": "lib",
 		"bin": "bin",
 		"doc": "README.md"
 	},
@@ -25,6 +25,7 @@
 		"body-parser": "^1.18.2",
 		"cookie-parser": "^1.4.3",
 		"debug": "^3.1.0",
+		"dotenv": "^4.0.0",
 		"ejs": "^2.5.7",
 		"express": "^4.16.2",
 		"morgan": "^1.9.0",
@@ -46,9 +47,9 @@
 	},
 	"scripts": {
 		"debug": "nodemon bin/www",
-		"start": "pm2 start app.js -i 2 && pm2 save",
+		"start": "NODE_ENV='production' && pm2 start app.js -i 2 && pm2 save",
 		"stop": "pm2 stop app",
-		"restart": "pm2 restart app.js && pm2 save",
+		"restart": "NODE_ENV='production' && pm2 restart app.js && pm2 save",
 		"save": "pm2 save",
 		"libs": "bower install",
 		"check": "npm-check -u",

@@ -3,10 +3,11 @@
 "use strict";
 
 // Module dependencies.
-var app = require("../app");
+var app = require(__dirname + "/../app");
+var models = require(__dirname + "/../lib/models");
+
 var debug = require("debug")("jasyp-c4p:www");
 var http = require("http");
-var models = require("../models");
 
 // Get port from environment and store in Express.
 var port = normalizePort(process.env.PORT || "3000");

@@ -7,8 +7,8 @@ var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 
-var index = require("./routes/index");
-var papers = require("./routes/papers");
+var index = require(__dirname + "/routes/index");
+var papers = require(__dirname + "/routes/papers");
 
 var app = express();
 
