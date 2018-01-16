@@ -1,0 +1,26 @@
+Hola:
+
+Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las solicitudes que nos lleguen. En cuanto cerremos el periodo de registro el día X, no más tarde del día Y confirmaremos el programa y lo publicaremos en nuestra página web; de igual forma que haremos con el horario definitivo.
+
+Hemos recibido la siguiente participación:
+
+	· Título: title,
+	· Nombre: , name,
+	· Email: , email,
+	· Resumen: , abstract,
+
+Si alguno de estos datos es erróneo, quieres cambiar algo o tienes cualquier duda, puedes escribirnos a jasyp@interferencias.tech.
+
+Muchas gracias por tu interés, te animamos a que les hables sobre esta aventura a todos tus amigos y conocidos, ya que este evento es mucho más grande gracias a tu aportación. =)
+
+Saludos,
+
+Interferencias
+
+Puedes encontranos en:
+	· Correo: info@interferencias.tech
+	· Telegram: t.me/inter_ferencias
+	· Twitter: twitter.com/Inter_ferencias
+	· Mastodon: mastodon.technology/@interferencias
+	· Vimeo: vimeo.com/interferencias
+	· GitHub: github.com/interferencias
