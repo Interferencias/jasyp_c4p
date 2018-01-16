@@ -14,6 +14,6 @@ module.exports = {
 		host: "localhost",
 		username: process.env.DB_USERNAME,
 		password: process.env.DB_PASSWORD,
-		database: "jasyp"
+		database: process.env.DB_DATABASE
 	}
 };

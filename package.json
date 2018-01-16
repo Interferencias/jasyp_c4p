@@ -30,7 +30,7 @@
 		"express": "^4.16.2",
 		"morgan": "^1.9.0",
 		"nodemailer": "^4.4.1",
-		"sequelize": "^4.31.1",
+		"sequelize": "^4.31.2",
 		"serve-favicon": "^2.4.5",
 		"sqlite3": "^3.1.13"
 	},
@@ -53,7 +53,7 @@
 		"save": "pm2 save",
 		"libs": "bower install",
 		"check": "npm-check -u",
-		"beautify": "js-beautify --indent-with-tabs --brace-style collapse -r *.json *.js bin/www config/*.js models/*.js routes/*.js",
-		"jshint": "jshint *.json *.js bin/www config/*.js models/*.js routes/*.js"
+		"beautify": "js-beautify -r *.json *.js bin/www config/* lib/*.js lib/models/* routes/*",
+		"jshint": "jshint *.json *.js bin/www config/* lib/*.js lib/models/* routes/*"
 	}
 }

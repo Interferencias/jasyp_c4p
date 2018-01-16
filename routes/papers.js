@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config();
+require("dotenv").config();
 
 var models = require(__dirname + "/../lib/models");
 var transporter = require(__dirname + "/../lib/messenger");
@@ -22,9 +22,7 @@ router.post("/create", function(req, res) {
 		email: req.body.email,
 		abstract: req.body.abstract
 	}).then(function() {
-		transporter.sendMail({
-			to: req.body.name.concat(" <", req.body.email, ">")
-		}, function(error, info) {
+		transporter.getTransporter(req.body.title, req.body.name, req.body.email, req.body.abstract).sendMail({}, function(error, info) {
 			if (error) {
 				res.render("error", {
 					message: "Error occured, message not sent.",
