@@ -4,10 +4,10 @@ Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las
 
 Hemos recibido la siguiente participación:
 
-	· Título: title,
-	· Nombre: , name,
-	· Email: , email,
-	· Resumen: , abstract,
+	· Título: _title,
+	· Nombre: _name,
+	· Email: _email,
+	· Resumen: _abstract,
 
 Si alguno de estos datos es erróneo, quieres cambiar algo o tienes cualquier duda, puedes escribirnos a jasyp@interferencias.tech.
 
