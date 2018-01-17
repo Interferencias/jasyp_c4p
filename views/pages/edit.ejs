@@ -1,32 +1,14 @@
 <% include ../partials/layout %>
 
-	<script type="application/javascript">
-		function confirm_edit() {
-			if (confirm("¿Estás seguro de que quieres editar esta comunicación?")) {
-				document.getElementById("edit_form").action = "/papers/<%= paper.id %>/update";
-				document.edit_form.action.submit();
-			} else
-				return false;
-		}
-
-		function confirm_delete() {
-			if (confirm("¿Estás seguro de que quieres borrar esta comunicación?")) {
-				document.getElementById("edit_form").action = "/papers/<%= paper.id %>/delete";
-				document.edit_form.action.submit();
-			} else
-				return false;
-		}
-	</script>
-
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">
 			<h2>JASYP C4P</h2>
 			<hr>
 
 			<div class="form-group example">
-				<form id="edit_form" role="form" method="post" class="form-horizontal" data-parsley-validate>
+				<form id="reg_form" role="form" method="post" class="form-horizontal" data-parsley-validate>
 					<label for="title" class="control-label col-sm-2">Título:</label>
-					<input class="form-control" type="text" name="title" value="<%= paper.title %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un de máximo 255 caracteres." />
+					<input class="form-control" type="text" name="title" value="<%= paper.title %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un máximo de 255 caracteres." />
 					<label for="name" class="control-label col-sm-2">Nombre:</label>
 					<input class="form-control" type="text" name="name" value="<%= paper.name %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un nombre con un máximo de 255 caracteres." />
 					<label for="email" class="control-label col-sm-2">Email:</label>
@@ -35,14 +17,13 @@
 					<textarea class="form-control" name="abstract" data-parsley-minlength="50" data-parsley-maxlength="2000" data-parsley-error-message="Resume tu participación con un mínimo de 50 caracteres y un máximo de 2000." rows="4" cols="50" style="resize:none; overflow-y: scroll;"
 					 required><%= paper.abstract %></textarea>
 					<div class="col-xs-12" style="height:12px;"></div>
-					<div class="media-object center">
-						<button class="btn btn-default" onclick="confirm_edit()">Editar</button>
-						<button class="btn btn-default" onclick="confirm_delete()">Eliminar</button>
-					</div>
-
 					<div class="bs-callout bs-callout-warning hidden">
 						<h4>Error</h4>
 						<p>Hay problemas con alguno de los campos del formulario</p>
+					</div>
+					<div class="media-object center">
+						<button type="submit" id="update" class="btn btn-default" formaction="/papers/<%= paper.id %>/update">Editar</button>
+						<button type="submit" id="delete" class="btn btn-default" formaction="/papers/<%= paper.id %>/delete">Eliminar</button>
 					</div>
 				</form>
 			</div>

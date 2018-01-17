@@ -2,13 +2,27 @@
 <script src="/lib/parsleyjs/dist/parsley.min.js"></script>
 <script type="application/javascript">
 	$(function() {
-		$('#create_form').parsley().on('field:validated', function() {
+		$('#reg_form').parsley().on('field:validated', function() {
 				var ok = $('.parsley-error').length === 0;
 				$('.bs-callout-warning').toggleClass('hidden', ok);
 			})
 			.on('form:submit', function() {
 				return true;
 			});
+
+		$("#update").click(function(e) {
+			if (!confirm("¿Estás seguro de que quieres editar esta comunicación?")) {
+				e.preventDefault();
+				return;
+			}
+		});
+
+		$("#delete").click(function(e) {
+			if (!confirm("¿Estás seguro de que quieres eliminar esta comunicación?")) {
+				e.preventDefault();
+				return;
+			}
+		});
 	});
 </script>
 

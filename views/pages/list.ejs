@@ -30,7 +30,9 @@
 				<% papers.forEach(function(paper) { %>
 					<tr>
 						<td>
-							<a href="/papers/<%= paper.id %>"><%= paper.id %></a>
+							<a href="/papers/<%= paper.id %>">
+								<%= paper.id %>
+							</a>
 						</td>
 						<td>
 							<%= paper.title %>
