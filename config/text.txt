@@ -1,13 +1,15 @@
 Hola:
 
-Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las solicitudes que nos lleguen. En cuanto cerremos el periodo de registro el día X, no más tarde del día Y confirmaremos el programa y lo publicaremos en nuestra página web; de igual forma que haremos con el horario definitivo.
+Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las solicitudes que nos lleguen. Una vez finalizado el periodo de registro de participaciones el día 5 de marzo confirmaremos el programa definitivo durante esa semanal, además de publicarlo también en nuestra página web "https://interferencias.tech/".
 
 Hemos recibido la siguiente participación:
 
-	· Título: _title,
-	· Nombre: _name,
-	· Email: _email,
-	· Resumen: _abstract,
+	· Nombre: _name
+	· Email: _email
+  · Título: _title
+  · Tipo de participación: _type
+  · Duración: _length
+	· Resumen: _abstract
 
 Si alguno de estos datos es erróneo, quieres cambiar algo o tienes cualquier duda, puedes escribirnos a jasyp@interferencias.tech.
 

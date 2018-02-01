@@ -7,14 +7,24 @@
 
 			<div class="form-group example">
 				<form id="reg_form" role="form" action="/papers/create" method="post" class="form-horizontal" data-parsley-validate>
-					<label for="title" class="control-label col-sm-2">Título:</label>
-					<input class="form-control" type="text" name="title" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un máximo de 255 caracteres." />
 					<label for="name" class="control-label col-sm-2">Nombre:</label>
 					<input class="form-control" type="text" name="name" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un nombre con un máximo de 255 caracteres." />
 					<label for="email" class="control-label col-sm-2">Email:</label>
 					<input class="form-control" type="email" name="email" data-parsley-trigger="change" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un email válido con un máximo de 255 caracteres." />
+					<label for="title" class="control-label col-sm-2">Título:</label>
+					<input class="form-control" type="text" name="title" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un máximo de 255 caracteres." />
+					<label for="type" class="control-label col-sm-2">Tipo:</label><br>
+					<p>
+						<input type="radio" name="type" value="T" /> Charla
+						<input type="radio" name="type" value="W" required /> Taller
+					</p>
+					<label for="length" class="control-label col-sm-2">Duración:</label><br>
+					<p>
+						<input type="radio" name="length" value="S"> Corta
+						<input type="radio" name="length" value="L" required> Larga
+					</p>
 					<label for="title" class="control-label col-sm-2">Resumen:</label>
-					<textarea class="form-control" name="abstract" data-parsley-minlength="50" data-parsley-maxlength="2000" data-parsley-error-message="Resume tu participación con un mínimo de 50 caracteres y un máximo de 2000." rows="4" cols="50" style="resize:none; overflow-y: scroll;"
+					<textarea class="form-control" name="abstract" data-parsley-minlength="150" data-parsley-maxlength="2000" data-parsley-error-message="Resume tu participación con un mínimo de 50 caracteres y un máximo de 2000." rows="4" cols="50" style="resize:none; overflow-y: scroll;"
 					 required></textarea>
 					<div class="col-xs-12" style="height:12px;"></div>
 					<div class="bs-callout bs-callout-warning hidden">

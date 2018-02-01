@@ -7,54 +7,68 @@
 			<button class="btn btn-default" onclick="location.href='/papers/download';">Descargar</button>
 		</div>
 		<div class="media-object center">
-		<div class="col-xs-12" style="height:12px;"></div>
-		<table class="table table-bordered table-striped table-hover table-condensed table-responsive">
-			<thead>
-				<tr>
-					<th>
-						ID
-					</th>
-					<th>
-						Título
-					</th>
-					<th>
-						Nombre
-					</th>
-					<th>
-						Email
-					</th>
-					<th>
-						Resumen
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<% papers.forEach(function(paper) { %>
+			<div class="col-xs-12" style="height:12px;"></div>
+			<table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+				<thead>
 					<tr>
-						<td>
-							<a href="/papers/<%= paper.id %>">
-								<%= paper.id %>
-							</a>
-						</td>
-						<td>
-							<%= paper.title %>
-						</td>
-						<td>
-							<%= paper.name %>
-						</td>
-						<td>
-							<%= paper.email %>
-						</td>
-						<td>
-							<%= paper.abstract %>
-						</td>
+						<th>
+							ID
+						</th>
+						<th>
+							Nombre
+						</th>
+						<th>
+							Email
+						</th>
+						<th>
+							Título
+						</th>
+						<th>
+							Tipo
+						</th>
+						<th>
+							Duración
+						</th>
 					</tr>
-					<% }); %>
+				</thead>
+				<tbody>
 
-			</tbody>
-		</table>
-	</div>
+					<% papers.forEach(function(paper) { %>
+						<tr>
+							<td>
+								<a href="/papers/<%= paper.id %>">
+									<%= paper.id %>
+								</a>
+							</td>
+							<td>
+								<%= paper.name %>
+							</td>
+							<td>
+								<%= paper.email %>
+							</td>
+							<td>
+								<%= paper.title %>
+							</td>
+							<td>
+								<% if (paper.type == "T") { %>
+									Charla
+									<% } else { %>
+										Taller
+										<% } %>
+							</td>
+							<td>
+								<% if (paper.length == "S") { %>
+									Corta
+									<% } else { %>
+										Larga
+										<% } %>
+							</td>
+						</tr>
+						<% }); %>
+
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 	<% include ../partials/footer %>

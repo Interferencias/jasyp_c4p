@@ -6,17 +6,17 @@ var models = require(__dirname + "/../lib/models");
 var transporter = require(__dirname + "/../lib/messenger");
 
 var express = require("express");
-var json2csv = require('json2csv');
+var json2csv = require("json2csv");
 
 var router = express.Router();
 
 router.get("/download", function(req, res, next) {
 	models.Paper.findAll({
-		attributes: ["id", "title", "name", "email", "abstract"],
+		attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
 		raw: true
 	}).then(function(papers) {
-		let fields = ['id', 'title', 'name', 'email', 'abstract'];
-		let fieldNames = ['ID', 'TÍTULO', 'NOMBRE', 'EMAIL', 'RESUMEN'];
+		let fields = ["id", "name", "email", "title", "type", "length", "abstract"];
+		let fieldNames = ["ID", "NOMBRE", "EMAIL", "TÍTULO", "TIPO", "DURACIÓN", "RESUMEN"];
 		let data = json2csv({
 			data: papers,
 			fields: fields,
@@ -24,23 +24,23 @@ router.get("/download", function(req, res, next) {
 			withBOM: true
 		});
 
-		res.attachment('solicitudes.csv');
+		res.attachment("participaciones.csv");
 		res.status(200).send(data);
 	});
 });
 
 router.get("/create", function(req, res, next) {
 	res.render("pages/create", {
-		title: "JASYP C4P - Crear comunicaciones"
+		title: "JASYP C4P - Crear participaciones"
 	});
 });
 
 router.get("/list", function(req, res) {
 	models.Paper.findAll({
-		attributes: ["id", "title", "name", "email", "abstract"]
+		attributes: ["id", "name", "email", "title", "type", "length"],
 	}).then(function(papers) {
 		res.render("pages/list", {
-			title: "JASYP C4P - Listar comunicaciones",
+			title: "JASYP C4P - Listar participaciones",
 			papers: papers
 		});
 	});
@@ -48,13 +48,13 @@ router.get("/list", function(req, res) {
 
 router.get("/:paper_id", function(req, res) {
 	models.Paper.find({
-		attributes: ["id", "title", "name", "email", "abstract"],
+		attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
 		where: {
 			id: req.params.paper_id
 		}
 	}).then(function(paper) {
 		res.render("pages/edit", {
-			title: "JASYP C4P - Editar comunicaciones",
+			title: "JASYP C4P - Editar participaciones",
 			paper: paper
 		});
 	});
@@ -62,16 +62,19 @@ router.get("/:paper_id", function(req, res) {
 
 router.post("/create", function(req, res) {
 	models.Paper.create({
-		title: req.body.title,
 		name: req.body.name,
 		email: req.body.email,
-		abstract: req.body.abstract
+    title: req.body.title,
+    type: req.body.type,
+    length: req.body.length,
+		abstract: req.body.abstract,
+		accepted: false
 	}).then(function() {
-		transporter.getTransporter(req.body.title, req.body.name, req.body.email, req.body.abstract).sendMail({}, function(error, info) {
+		transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.body.length, req.body.abstract).sendMail({}, function(error, info) {
 			if (error) {
 				res.render("error", {
 					title: "JASYP C4P - Error",
-					message: "Error occured, message not sent.",
+					message: "Ha ocurrido un error, no se ha podido mandar el mensaje de confirmación.",
 					error: error
 				});
 			} else {
@@ -83,9 +86,11 @@ router.post("/create", function(req, res) {
 
 router.post("/:paper_id/update", function(req, res) {
 	models.Paper.update({
-		title: req.body.title,
 		name: req.body.name,
 		email: req.body.email,
+    title: req.body.title,
+    type: req.body.type,
+    length: req.body.length,
 		abstract: req.body.abstract
 	}, {
 		where: {
