@@ -64,9 +64,9 @@ router.post("/create", function(req, res) {
 	models.Paper.create({
 		name: req.body.name,
 		email: req.body.email,
-    title: req.body.title,
-    type: req.body.type,
-    length: req.body.length,
+		title: req.body.title,
+		type: req.body.type,
+		length: req.body.length,
 		abstract: req.body.abstract,
 		accepted: false
 	}).then(function() {
@@ -88,9 +88,9 @@ router.post("/:paper_id/update", function(req, res) {
 	models.Paper.update({
 		name: req.body.name,
 		email: req.body.email,
-    title: req.body.title,
-    type: req.body.type,
-    length: req.body.length,
+		title: req.body.title,
+		type: req.body.type,
+		length: req.body.length,
 		abstract: req.body.abstract
 	}, {
 		where: {
