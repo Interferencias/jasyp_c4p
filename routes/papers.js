@@ -68,7 +68,7 @@ router.post("/create", function(req, res) {
 		type: req.body.type,
 		length: req.body.length,
 		abstract: req.body.abstract,
-		accepted: false
+		state: "R"
 	}).then(function() {
 		transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.body.length, req.body.abstract).sendMail({}, function(error, info) {
 			if (error) {
@@ -78,7 +78,7 @@ router.post("/create", function(req, res) {
 					error: error
 				});
 			} else {
-				res.redirect("/papers/list");
+				res.redirect("/admin/papers/list");
 			}
 		});
 	});
@@ -97,7 +97,7 @@ router.post("/:paper_id/update", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/papers/list");
+		res.redirect("/admin/papers/list");
 	});
 });
 
@@ -107,7 +107,7 @@ router.post("/:paper_id/delete", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/papers/list");
+		res.redirect("/admin/papers/list");
 	});
 });
 
