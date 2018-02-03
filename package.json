@@ -49,9 +49,9 @@
 	},
 	"scripts": {
 		"debug": "nodemon bin/www",
-		"start": "NODE_ENV='production' && pm2 start app.js -i 2 && pm2 save",
-		"stop": "pm2 stop app",
-		"restart": "NODE_ENV='production' && pm2 restart app.js && pm2 save",
+		"start": "NODE_ENV=production && pm2 start bin/www -i 2 && pm2 save",
+		"stop": "pm2 stop bin/www",
+		"restart": "NODE_ENV=production && pm2 restart bin/www && pm2 save",
 		"save": "pm2 save",
 		"libs": "bower install",
 		"check": "npm-check -u",
