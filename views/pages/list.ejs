@@ -4,7 +4,7 @@
 		<div class="col-md-4 col-md-offset-4 text-center">
 			<h2>Listado de ponencias</h2>
 			<hr>
-			<button class="btn btn-default" onclick="location.href='/admin/papers/download';">Descargar</button>
+			<button class="btn btn-default" onclick="location.href='/jasyp_app/admin/papers/download';">Descargar</button>
 		</div>
 		<div class="media-object center">
 			<div class="col-xs-12" style="height:12px;"></div>
@@ -36,7 +36,7 @@
 					<% papers.forEach(function(paper) { %>
 						<tr>
 							<td>
-								<a href="/admin/papers/<%= paper.id %>">
+								<a href="/jasyp_app/admin/papers/<%= paper.id %>">
 									<%= paper.id %>
 								</a>
 							</td>

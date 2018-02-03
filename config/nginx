@@ -1,0 +1,21 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	index index.html;
+
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location /jasyp_app {
+		rewrite /jasyp_app(.*) $1 break;
+		proxy_pass http://127.0.0.1:3000;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+	}
+}
