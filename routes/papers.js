@@ -78,7 +78,7 @@ router.post("/create", function(req, res) {
 					error: error
 				});
 			} else {
-				res.redirect("/admin/papers/list");
+				res.redirect("/jasyp_app/admin/papers/list");
 			}
 		});
 	});
@@ -97,7 +97,7 @@ router.post("/:paper_id/update", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/admin/papers/list");
+		res.redirect("/jasyp_app/admin/papers/list");
 	});
 });
 
@@ -107,7 +107,7 @@ router.post("/:paper_id/delete", function(req, res) {
 			id: req.params.paper_id
 		}
 	}).then(function() {
-		res.redirect("/admin/papers/list");
+		res.redirect("/jasyp_app/admin/papers/list");
 	});
 });
 
