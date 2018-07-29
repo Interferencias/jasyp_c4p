@@ -59,6 +59,6 @@
         "libs": "bower install",
         "check": "npm-check -u",
         "beautify": "js-beautify -r *.json *.js bin/www config/* lib/*.js lib/models/* routes/*",
-        "jshint": "jshint *.json *.js bin/www config/* lib/*.js lib/models/* routes/*"
+        "jshint": "jshint *.json *.js bin/www config/*.js lib/*.js lib/models/* routes/*"
     }
 }
