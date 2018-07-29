@@ -8,6 +8,15 @@ var transporter = require(__dirname + "/../lib/messenger");
 var express = require("express");
 var json2csv = require("json2csv");
 
+var multer = require('multer')
+var fs = require('fs-extra');
+
+var path = "public/uploads/"
+fs.mkdirsSync(path);
+var upload = multer({
+    dest: path
+})
+
 var router = express.Router();
 
 var config = require(__dirname + "/../config/sequelize");
@@ -65,7 +74,7 @@ router.get("/:paper_id", function(req, res) {
     });
 });
 
-router.post("/create", function(req, res) {
+router.post("/create", upload.single('paper'), function(req, res) {
     models.Paper.create({
         name: req.body.name,
         email: req.body.email,
