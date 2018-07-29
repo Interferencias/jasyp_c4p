@@ -1,28 +1,17 @@
 Hola:
 
-Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las solicitudes que nos lleguen. Una vez finalizado el periodo de registro de participaciones el día 5 de marzo confirmaremos el programa definitivo durante esa semanal, además de publicarlo también en nuestra página web "https://interferencias.tech/".
+    Gracias por registrarte en las JASyP '18. Esperamos poder dar cabida a todas las solicitudes que nos lleguen. Una vez finalizado el periodo de registro de participaciones el día 5 de marzo confirmaremos el programa definitivo durante esa semanal, además de publicarlo también en nuestra página web "https://interferencias.tech/".
 
 Hemos recibido la siguiente participación:
 
-	· Nombre: _name
-	· Email: _email
-  · Título: _title
-  · Tipo de participación: _type
-  · Duración: _length
-	· Resumen: _abstract
+    ·Nombre: _name· Email: _email· Título: _title· Tipo de participación: _type· Duración: _length· Resumen: _abstract
 
-Si alguno de estos datos es erróneo, quieres cambiar algo o tienes cualquier duda, puedes escribirnos a jasyp@interferencias.tech.
+Si alguno de estos datos es erróneo, quieres cambiar algo o tienes cualquier duda, puedes escribirnos a jasyp @interferencias.tech.
 
-Muchas gracias por tu interés, te animamos a que les hables sobre esta aventura a todos tus amigos y conocidos, ya que este evento es mucho más grande gracias a tu aportación. =)
+Muchas gracias por tu interés, te animamos a que les hables sobre esta aventura a todos tus amigos y conocidos, ya que este evento es mucho más grande gracias a tu aportación. = )
 
 Saludos,
 
 Interferencias
 
-Puedes encontranos en:
-	· Correo: info@interferencias.tech
-	· Telegram: t.me/inter_ferencias
-	· Twitter: twitter.com/Inter_ferencias
-	· Mastodon: mastodon.technology/@interferencias
-	· Vimeo: vimeo.com/interferencias
-	· GitHub: github.com/interferencias
+Puedes encontranos en: ·Correo: info @interferencias.tech· Telegram: t.me / inter_ferencias· Twitter: twitter.com / Inter_ferencias· Mastodon: mastodon.technology / @interferencias· Vimeo: vimeo.com / interferencias· GitHub: github.com / interferencias

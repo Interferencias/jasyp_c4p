@@ -1,14 +1,14 @@
 {
-	"name": "jasyp-c4p",
-	"version": "0.0.1",
-	"author": "Germán Martínez Maldonado <germaaan@protonmail.com>",
-	"description": "Aplicación para gestionar las solicitudes para las JASYP",
-	"license": "GPL-3.0",
-	"main": "bin/www",
-	"private": true,
-	"dependencies": {
-		"jquery": "^3.2.1",
-		"bootstrap": "^3.3.7",
-		"parsleyjs": "^2.8.0"
-	}
+    "name": "jasyp-c4p",
+    "version": "0.0.1",
+    "author": "Germán Martínez Maldonado <germaaan@protonmail.com>",
+    "description": "Aplicación para gestionar las solicitudes para las JASYP",
+    "license": "GPL-3.0",
+    "main": "bin/www",
+    "private": true,
+    "dependencies": {
+        "jquery": "^3.2.1",
+        "bootstrap": "^3.3.7",
+        "parsleyjs": "^2.8.0"
+    }
 }

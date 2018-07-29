@@ -1,12 +1,12 @@
 {
-	"apps": [{
-		"name": "jasyp-c4p",
-		"script": "bin/www",
-		"watch": false,
-		"instances": 2,
-		"exec_mode": "cluster",
-		"env": {
-			"NODE_ENV": "production"
-		}
-	}]
+    "apps": [{
+        "name": "jasyp-c4p",
+        "script": "bin/www",
+        "watch": false,
+        "instances": 2,
+        "exec_mode": "cluster",
+        "env": {
+            "NODE_ENV": "production"
+        }
+    }]
 }

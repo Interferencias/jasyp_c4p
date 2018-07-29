@@ -23,4 +23,4 @@ Funcionamiento a través de **PM2**.
 npm start
 ```
 
-Nota: la vista de la aplicación está configurada para funcionar detrás de un proxy inverso que responda las solicitudes de `$HOST/jasyp_app/$ROUTE`.
+Nota: la vista de la aplicación está configurada para funcionar detrás de un proxy inverso que responda las solicitudes de `$HOST/$app_name/$ROUTE`, siendo `$app_name` el valor en `config\credentials.js`.
