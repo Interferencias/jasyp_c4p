@@ -21,9 +21,6 @@ var upload = multer({
             var path = "public/uploads/";
             fs.mkdirsSync(path);
             callback(null, path);
-        },
-        filename: (req, file, callback) => {
-            callback(null, file.originalname);
         }
     }),
     limits: {
@@ -94,6 +91,9 @@ router.get("/:paper_id", function(req, res) {
 });
 
 router.post("/create", upload.single("paper"), function(req, res) {
+    fs.rename("public/uploads/" + req.file.filename, "public/uploads/" + req.file.filename + ".pdf", function(err) {
+        if (err) console.log("Error: " + err);
+    });
     models.Paper.create({
         name: req.body.name,
         email: req.body.email,
@@ -101,8 +101,8 @@ router.post("/create", upload.single("paper"), function(req, res) {
         type: req.body.type,
         length: req.body.length,
         abstract: req.body.abstract,
-        file: "req.file",
-        url: "req.body.url",
+        file: req.file.filename + ".pdf",
+        url: "URL",
         state: "R"
     }).then(function() {
         transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.body.length, req.body.abstract).sendMail({}, function(error, info) {
