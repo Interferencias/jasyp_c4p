@@ -6,6 +6,9 @@
       if (this.files[0].size > <%= max_size %>) {
         alert("El archivo seleccionado es demasiado grande (máximo 20 MB).");
         this.value = "";
+      } else if (this.files[0].type !== "application/pdf"){
+        alert("Debe seleccionar un archivo en formato PDF.");
+        this.value = "";
       };
     });
 
