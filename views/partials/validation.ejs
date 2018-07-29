@@ -1,29 +1,36 @@
 <script src="https://interferencias.tech/assets/lib/jquery/dist/jquery.min.js"></script>
 <script src="https://interferencias.tech/assets/lib/parsleyjs/dist/parsley.min.js"></script>
 <script type="application/javascript">
-	$(function() {
-		$('#reg_form').parsley().on('field:validated', function() {
-				var ok = $('.parsley-error').length === 0;
-				$('.bs-callout-warning').toggleClass('hidden', ok);
-			})
-			.on('form:submit', function() {
-				return true;
-			});
+  $(function() {
+    $("#paper").change(function(e) {
+      if (this.files[0].size > <%= max_size %>) {
+        alert("El archivo seleccionado es demasiado grande (máximo 20 MB).");
+        this.value = "";
+      };
+    });
 
-		$("#update").click(function(e) {
-			if (!confirm("¿Estás seguro de que quieres editar esta comunicación?")) {
-				e.preventDefault();
-				return;
-			}
-		});
+    $('#reg_form').parsley().on('field:validated', function() {
+        var ok = $('.parsley-error').length === 0;
+        $('.bs-callout-warning').toggleClass('hidden', ok);
+      })
+      .on('form:submit', function() {
+        return true;
+      });
 
-		$("#delete").click(function(e) {
-			if (!confirm("¿Estás seguro de que quieres eliminar esta comunicación?")) {
-				e.preventDefault();
-				return;
-			}
-		});
-	});
+    $("#update").click(function(e) {
+      if (!confirm("¿Estás seguro de que quieres editar esta comunicación?")) {
+        e.preventDefault();
+        return;
+      }
+    });
+
+    $("#delete").click(function(e) {
+      if (!confirm("¿Estás seguro de que quieres eliminar esta comunicación?")) {
+        e.preventDefault();
+        return;
+      }
+    });
+  });
 </script>
 
 <% include footer %>

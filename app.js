@@ -16,6 +16,8 @@ var app = express();
 
 var auth = require(__dirname + "/lib/auth");
 
+var config = require(__dirname + "/config/sequelize");
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -53,7 +55,8 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     res.render("error", {
-        title: "JASYP C4P - Error",
+        app_name: config.app_name,
+        title: config.event_name + " - Error",
         message: err.message,
         error: err
     });

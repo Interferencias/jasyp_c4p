@@ -11,15 +11,25 @@ var json2csv = require("json2csv");
 var multer = require('multer')
 var fs = require('fs-extra');
 
-var path = "public/uploads/"
-fs.mkdirsSync(path);
-var upload = multer({
-    dest: path
-})
-
 var router = express.Router();
 
 var config = require(__dirname + "/../config/sequelize");
+
+var upload = multer({
+    storage: multer.diskStorage({
+        destination: (req, file, callback) => {
+            var path = "public/uploads/"
+            fs.mkdirsSync(path);
+            callback(null, path);
+        },
+        filename: (req, file, callback) => {
+            callback(null, file.originalname);
+        }
+    }),
+    limits: {
+        fileSize: config.max_size //20971520 // 20 MB
+    }
+});
 
 router.get("/download", function(req, res, next) {
     models.Paper.findAll({
@@ -43,7 +53,8 @@ router.get("/download", function(req, res, next) {
 router.get("/create", function(req, res, next) {
     res.render("pages/create", {
         app_name: config.app_name,
-        title: "JASYP C4P - Crear participaciones"
+        max_size: config.max_size,
+        title: config.event_name + " - Crear participaciones"
     });
 });
 
@@ -53,7 +64,7 @@ router.get("/list", function(req, res) {
     }).then(function(papers) {
         res.render("pages/list", {
             app_name: config.app_name,
-            title: "JASYP C4P - Listar participaciones",
+            title: config.event_name + " - Listar participaciones",
             papers: papers
         });
     });
@@ -68,7 +79,8 @@ router.get("/:paper_id", function(req, res) {
     }).then(function(paper) {
         res.render("pages/edit", {
             app_name: config.app_name,
-            title: "JASYP C4P - Editar participaciones",
+            max_size: config.max_size,
+            title: config.event_name + " - Editar participaciones",
             paper: paper
         });
     });
@@ -90,7 +102,7 @@ router.post("/create", upload.single('paper'), function(req, res) {
             if (error) {
                 res.render("error", {
                     app_name: config.app_name,
-                    title: "JASYP C4P - Error",
+                    title: config.event_name + " - Error",
                     message: "Ha ocurrido un error, no se ha podido mandar el mensaje de confirmación.",
                     error: error
                 });

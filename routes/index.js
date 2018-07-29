@@ -8,7 +8,7 @@ var config = require(__dirname + "/../config/sequelize");
 router.get("/", function(req, res, next) {
     res.render("pages/index", {
         app_name: config.app_name,
-        title: "JASYP C4P"
+        title: config.event_name
     });
 });
 
