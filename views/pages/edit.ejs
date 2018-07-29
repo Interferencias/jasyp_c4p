@@ -1,54 +1,58 @@
 <% include ../partials/layout %>
 
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4 text-center">
-			<h2>Editar participaciones</h2>
-			<hr>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 text-center">
+      <h2>Editar participaciones</h2>
+      <hr>
 
-			<div class="form-group example">
-				<form id="reg_form" role="form" method="post" enctype="multipart/form-data" class="form-horizontal" data-parsley-validate>
-					<label for="name" class="control-label col-sm-2">Nombre:</label>
-					<input class="form-control" type="text" name="name" value="<%= paper.name %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un nombre con un máximo de 255 caracteres." />
-					<label for="email" class="control-label col-sm-2">Email:</label>
-					<input class="form-control" type="email" name="email" value="<%= paper.email %>" data-parsley-trigger="change" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un email válido con un máximo de 255 caracteres." />
-					<label for="title" class="control-label col-sm-2">Título:</label>
-					<input class="form-control" type="text" name="title" value="<%= paper.title %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un máximo de 255 caracteres." />
-					<label for="type" class="control-label col-sm-2">Tipo:</label><br>
-					<p>
-						<% if (paper.type == "T") { %>
-							<input type="radio" name="type" value="T" checked/> Charla
-							<input type="radio" name="type" value="W" required /> Taller
-							<% } else { %>
-								<input type="radio" name="type" value="T" /> Charla
-								<input type="radio" name="type" value="W" required checked/> Taller
-								<% } %>
-					</p>
-					<label for="length" class="control-label col-sm-2">Duración:</label><br>
-					<p>
-						<% if (paper.length == "S") { %>
-							<input type="radio" name="length" value="S" checked> Corta
-							<input type="radio" name="length" value="L" required> Larga
-							<% } else { %>
-								<input type="radio" name="length" value="S"> Corta
-								<input type="radio" name="length" value="L" required checked> Larga
-								<% } %>
-					</p>
-					<label for="title" class="control-label col-sm-2">Resumen:</label>
-					<textarea class="form-control" name="abstract" data-parsley-minlength="150" data-parsley-maxlength="2000" data-parsley-error-message="Resume tu participación con un mínimo de 50 caracteres y un máximo de 2000." rows="4" cols="50" style="resize:none; overflow-y: scroll;"
-					 required><%= paper.abstract %></textarea>
-					<div class="col-xs-12" style="height:12px;"></div>
-					<div class="bs-callout bs-callout-warning hidden">
-						<h4>Error</h4>
-						<p>Hay problemas con alguno de los campos del formulario</p>
-					</div>
-					<div class="media-object center">
-						<button type="submit" id="update" class="btn btn-default" formaction="/<%= app_name %>/admin/papers/<%= paper.id %>/update">Editar</button>
-						<button type="submit" id="delete" class="btn btn-default" formaction="/<%= app_name %>/admin/papers/<%= paper.id %>/delete">Eliminar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	</div>
+      <div class="form-group example">
+        <form id="reg_form" role="form" method="post" enctype="multipart/form-data" class="form-horizontal" data-parsley-validate>
+          <label for="name" class="control-label col-sm-2">Nombre:</label>
+          <input class="form-control" type="text" name="name" value="<%= paper.name %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un nombre con un máximo de 255 caracteres." />
+          <label for="email" class="control-label col-sm-2">Email:</label>
+          <input class="form-control" type="email" name="email" value="<%= paper.email %>" data-parsley-trigger="change" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un email válido con un máximo de 255 caracteres." />
+          <label for="title" class="control-label col-sm-2">Título:</label>
+          <input class="form-control" type="text" name="title" value="<%= paper.title %>" data-parsley-maxlength="255" required data-parsley-error-message="Introduce un título con un máximo de 255 caracteres." />
+          <label for="type" class="control-label col-sm-2">Tipo:</label><br>
+          <p>
+            <% if (paper.type == "T") { %>
+              <input type="radio" name="type" value="T" checked/> Charla
+              <input type="radio" name="type" value="W" required /> Taller
+              <% } else { %>
+                <input type="radio" name="type" value="T" /> Charla
+                <input type="radio" name="type" value="W" required checked/> Taller
+                <% } %>
+          </p>
+          <label for="length" class="control-label col-sm-2">Duración:</label><br>
+          <p>
+            <% if (paper.length == "S") { %>
+              <input type="radio" name="length" value="S" checked> Corta
+              <input type="radio" name="length" value="L" required> Larga
+              <% } else { %>
+                <input type="radio" name="length" value="S"> Corta
+                <input type="radio" name="length" value="L" required checked> Larga
+                <% } %>
+          </p>
+          <label for="title" class="control-label col-sm-2">Resumen:</label>
+          <textarea class="form-control" name="abstract" data-parsley-minlength="150" data-parsley-maxlength="2000" data-parsley-error-message="Resume tu participación con un mínimo de 50 caracteres y un máximo de 2000." rows="4" cols="50" style="resize:none; overflow-y: scroll;"
+            required><%= paper.abstract %></textarea><br>
+          <label for="paper" class="control-label col-sm-2">Paper:</label><br><br>
+					<a href="/bioinf_app/uploads/<%= paper.file %>" target="_blank"><%= paper.file %></a><br><br>
+					<input type="file" name="paper" id="paper" data-parsley-error-message="Debe seleccionar un archivo PDF con un tamaño no mayor a 20MB."/>
+					<input type="hidden" name="edited" id="edited" value="false">
+          <div class="col-xs-12" style="height:12px;"></div>
+          <div class="bs-callout bs-callout-warning hidden">
+            <h4>Error</h4>
+            <p>Hay problemas con alguno de los campos del formulario</p>
+          </div>
+          <div class="media-object center">
+            <button type="submit" id="update" class="btn btn-default" formaction="/<%= app_name %>/admin/papers/<%= paper.id %>/update">Editar</button>
+            <button type="submit" id="delete" class="btn btn-default" formaction="/<%= app_name %>/admin/papers/<%= paper.id %>/delete">Eliminar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
 
-	<% include ../partials/validation %>
+  <% include ../partials/validation %>

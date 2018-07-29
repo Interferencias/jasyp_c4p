@@ -24,6 +24,10 @@
       if (!confirm("¿Estás seguro de que quieres editar esta comunicación?")) {
         e.preventDefault();
         return;
+      } else {
+        if ($("#paper")[0].files[0] !== undefined){
+          $("#edited")[0].value = "true";
+        }
       }
     });
 

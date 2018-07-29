@@ -29,6 +29,9 @@
 						<th>
 							Duración
 						</th>
+						<th>
+							Paper
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -62,6 +65,9 @@
 									<% } else { %>
 										Larga
 										<% } %>
+							</td>
+							<td>
+								<a href="/bioinf_app/uploads/<%= paper.file %>" target="_blank"><%= paper.file %></a>
 							</td>
 						</tr>
 						<% }); %>

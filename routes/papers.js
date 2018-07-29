@@ -64,7 +64,7 @@ router.get("/create", function(req, res, next) {
 
 router.get("/list", function(req, res) {
     models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type", "length"],
+        attributes: ["id", "name", "email", "title", "type", "length", "file"],
     }).then(function(papers) {
         res.render("pages/list", {
             app_name: config.app_name,
@@ -76,7 +76,7 @@ router.get("/list", function(req, res) {
 
 router.get("/:paper_id", function(req, res) {
     models.Paper.find({
-        attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
+        attributes: ["id", "name", "email", "title", "type", "length", "abstract", "file"],
         where: {
             id: req.params.paper_id
         }
@@ -91,9 +91,6 @@ router.get("/:paper_id", function(req, res) {
 });
 
 router.post("/create", upload.single("paper"), function(req, res) {
-    fs.rename("public/uploads/" + req.file.filename, "public/uploads/" + req.file.filename + ".pdf", function(err) {
-        if (err) console.log("Error: " + err);
-    });
     models.Paper.create({
         name: req.body.name,
         email: req.body.email,
@@ -105,6 +102,10 @@ router.post("/create", upload.single("paper"), function(req, res) {
         url: "URL",
         state: "R"
     }).then(function() {
+        fs.rename("public/uploads/" + req.file.filename, "public/uploads/" + req.file.filename + ".pdf", function(err) {
+            if (err) console.log("Error: " + err);
+        });
+
         transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.body.length, req.body.abstract).sendMail({}, function(error, info) {
             if (error) {
                 res.render("error", {
@@ -120,30 +121,71 @@ router.post("/create", upload.single("paper"), function(req, res) {
     });
 });
 
-router.post("/:paper_id/update", function(req, res) {
-    models.Paper.update({
-        name: req.body.name,
-        email: req.body.email,
-        title: req.body.title,
-        type: req.body.type,
-        length: req.body.length,
-        abstract: req.body.abstract
-    }, {
-        where: {
-            id: req.params.paper_id
-        }
-    }).then(function() {
-        res.redirect("/" + config.app_name + "/admin/papers/list");
-    });
+router.post("/:paper_id/update", upload.single("paper"), function(req, res) {
+    console.log("MODIFICADO: " + req.body.edited);
+    if (req.body.edited === "true") {
+        models.Paper.find({
+            attributes: ["file"],
+            where: {
+                id: req.params.paper_id
+            }
+        }).then(function(paper) {
+            fs.unlinkSync(__dirname + "/../public/uploads/" + paper.file);
+
+            models.Paper.update({
+                name: req.body.name,
+                email: req.body.email,
+                title: req.body.title,
+                type: req.body.type,
+                length: req.body.length,
+                abstract: req.body.abstract,
+                file: req.file.filename + ".pdf",
+            }, {
+                where: {
+                    id: req.params.paper_id
+                }
+            }).then(function() {
+                fs.rename("public/uploads/" + req.file.filename, "public/uploads/" + req.file.filename + ".pdf", function(err) {
+                    if (err) console.log("Error: " + err);
+                });
+
+                res.redirect("/" + config.app_name + "/admin/papers/list");
+            });
+        });
+    } else {
+        models.Paper.update({
+            name: req.body.name,
+            email: req.body.email,
+            title: req.body.title,
+            type: req.body.type,
+            length: req.body.length,
+            abstract: req.body.abstract,
+        }, {
+            where: {
+                id: req.params.paper_id
+            }
+        }).then(function() {
+            res.redirect("/" + config.app_name + "/admin/papers/list");
+        });
+    }
 });
 
 router.post("/:paper_id/delete", function(req, res) {
-    models.Paper.destroy({
+    models.Paper.find({
+        attributes: ["file"],
         where: {
             id: req.params.paper_id
         }
-    }).then(function() {
-        res.redirect("/" + config.app_name + "/admin/papers/list");
+    }).then(function(paper) {
+        fs.unlinkSync(__dirname + "/../public/uploads/" + paper.file);
+
+        models.Paper.destroy({
+            where: {
+                id: req.params.paper_id
+            }
+        }).then(function() {
+            res.redirect("/" + config.app_name + "/admin/papers/list");
+        });
     });
 });
 
