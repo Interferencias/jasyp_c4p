@@ -6,7 +6,7 @@ var models = require(__dirname + "/../lib/models");
 var transporter = require(__dirname + "/../lib/messenger");
 
 var express = require("express");
-var json2csv = require("json2csv");
+const Json2csvParser = require('json2csv').Parser;
 
 var multer = require("multer");
 var fs = require("fs-extra");
@@ -14,6 +14,20 @@ var fs = require("fs-extra");
 var router = express.Router();
 
 var config = require(__dirname + "/../config/sequelize");
+
+router.get("/download", function(req, res, next) {
+    models.Paper.findAll({
+        attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
+        raw: true
+    }).then(function(papers) {
+        const fields = ["id", "name", "email", "title", "type", "length", "abstract"];
+        const json2csvParser = new Json2csvParser({ fields });
+        const csv = json2csvParser.parse(papers);
+        
+        res.attachment("participaciones.csv");
+        res.status(200).send(csv);
+    });
+});
 
 var upload = multer({
     storage: multer.diskStorage({
@@ -33,25 +47,6 @@ var upload = multer({
             callback(null, true);
         }
     }
-});
-
-router.get("/download", function(req, res, next) {
-    models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
-        raw: true
-    }).then(function(papers) {
-        let fields = ["id", "name", "email", "title", "type", "length", "abstract"];
-        let fieldNames = ["ID", "NOMBRE", "EMAIL", "TÍTULO", "TIPO", "DURACIÓN", "RESUMEN"];
-        let data = json2csv({
-            data: papers,
-            fields: fields,
-            fieldNames: fieldNames,
-            withBOM: true
-        });
-
-        res.attachment("participaciones.csv");
-        res.status(200).send(data);
-    });
 });
 
 router.get("/create", function(req, res, next) {
