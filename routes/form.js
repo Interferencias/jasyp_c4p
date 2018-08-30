@@ -7,6 +7,7 @@ var fs = require("fs-extra");
 
 var models = require(__dirname + "/../lib/models");
 var transporter = require(__dirname + "/../lib/messenger");
+var upload = require(__dirname + "/../lib/files");
 
 var router = express.Router();
 
@@ -16,7 +17,7 @@ router.get("/", function(req, res, next) {
     });
 });
 
-router.post("/", /*upload.single("paper"),*/ function(req, res, next) {
+router.post("/", upload.single("paper"), function(req, res, next) {
     let validIP = process.env.VALID_IP.split(",");
     let currentIp = req.connection.remoteAddress;
     currentIp = currentIp.substring(currentIp.lastIndexOf(":") + 1, currentIp.length);
