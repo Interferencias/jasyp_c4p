@@ -22,6 +22,44 @@ router.get("/create", function(req, res, next) {
     });
 });
 
+router.get("/download", function(req, res, next) {
+    models.Paper.findAll({
+        attributes: ["id", "name", "email", "title", "type", "file"],
+        raw: true
+    }).then(function(papers) {
+        papers.forEach(function(part, index, values) {
+            if (values[index].type === "T") {
+                values[index].type = "Charla";
+            } else {
+                values[index].type = "Poster";
+            }
+            values[index].file = "https://interferencias.tech/medinbio/uploads/" + values[index].file + ".pdf";
+        });
+
+        const fields = ["id", "name", "email", "title", "type", "file"];
+        const json2csvParser = new Json2csvParser({
+            fields
+        });
+        let csv = json2csvParser.parse(papers);
+
+        let replaces = {
+            id: "ID",
+            name: "NOMBRE",
+            email: "EMAIL",
+            title: "TÍTULO",
+            type: "TIPO PARTICIPACIÓN",
+            file: "ENLACE PAPER"
+        };
+
+        csv = csv.replace(/id|name|email|title|type|file/gi, function(matched) {
+            return replaces[matched];
+        });
+
+        res.attachment("papers.csv");
+        res.status(200).send(csv);
+    });
+});
+
 router.get("/list", function(req, res) {
     models.Paper.findAll({
         attributes: ["id", "name", "email", "title", "type", "file"],
@@ -47,22 +85,6 @@ router.get("/:paper_id", function(req, res) {
             title: config.event_name + " - Editar participaciones",
             paper: paper
         });
-    });
-});
-
-router.get("/download", function(req, res, next) {
-    models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type"],
-        raw: true
-    }).then(function(papers) {
-        const fields = ["id", "name", "email", "title", "type"];
-        const json2csvParser = new Json2csvParser({
-            fields
-        });
-        const csv = json2csvParser.parse(papers);
-
-        res.attachment("papers.csv");
-        res.status(200).send(csv);
     });
 });
 
