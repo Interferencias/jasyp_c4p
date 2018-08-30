@@ -45,7 +45,7 @@ router.get("/create", function(req, res, next) {
 
 router.get("/list", function(req, res) {
     models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type", "length", "file"],
+        attributes: ["id", "name", "email", "title", "type", "file"],
     }).then(function(papers) {
         res.render("pages/list", {
             app_name: config.app_name,
@@ -57,7 +57,7 @@ router.get("/list", function(req, res) {
 
 router.get("/:paper_id", function(req, res) {
     models.Paper.find({
-        attributes: ["id", "name", "email", "title", "type", "length", "abstract", "file"],
+        attributes: ["id", "name", "email", "title", "type", "file"],
         where: {
             id: req.params.paper_id
         }
@@ -73,16 +73,16 @@ router.get("/:paper_id", function(req, res) {
 
 router.get("/download", function(req, res, next) {
     models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type", "length", "abstract"],
+        attributes: ["id", "name", "email", "title", "type", "file"],
         raw: true
     }).then(function(papers) {
-        const fields = ["id", "name", "email", "title", "type", "length", "abstract"];
+        const fields = ["id", "name", "email", "title", "type", "file"];
         const json2csvParser = new Json2csvParser({
             fields
         });
         const csv = json2csvParser.parse(papers);
 
-        res.attachment("participaciones.csv");
+        res.attachment("papers.csv");
         res.status(200).send(csv);
     });
 });
@@ -93,17 +93,17 @@ router.post("/create", upload.single("paper"), function(req, res) {
         email: req.body.email,
         title: req.body.title,
         type: req.body.type,
-        length: req.body.length,
-        abstract: req.body.abstract,
+        //length: req.body.length,
+        //abstract: req.body.abstract,
         file: req.file.filename + ".pdf",
-        url: "URL",
+        // url: "URL",
         state: "R"
     }).then(function() {
         fs.rename("public/uploads/" + req.file.filename, "public/uploads/" + req.file.filename + ".pdf", function(err) {
             if (err) console.log("Error: " + err);
         });
 
-        transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.body.length, req.body.abstract).sendMail({}, function(error, info) {
+        transporter.getTransporter(req.body.name, req.body.email, req.body.title, req.body.type, req.file.filename).sendMail({}, function(error, info) {
             if (error) {
                 res.render("error", {
                     app_name: config.app_name,
@@ -119,7 +119,6 @@ router.post("/create", upload.single("paper"), function(req, res) {
 });
 
 router.post("/:paper_id/update", upload.single("paper"), function(req, res) {
-    console.log("MODIFICADO: " + req.body.edited);
     if (req.body.edited === "true") {
         models.Paper.find({
             attributes: ["file"],
@@ -134,8 +133,8 @@ router.post("/:paper_id/update", upload.single("paper"), function(req, res) {
                 email: req.body.email,
                 title: req.body.title,
                 type: req.body.type,
-                length: req.body.length,
-                abstract: req.body.abstract,
+                //length: req.body.length,
+                //abstract: req.body.abstract,
                 file: req.file.filename + ".pdf",
             }, {
                 where: {
@@ -155,8 +154,8 @@ router.post("/:paper_id/update", upload.single("paper"), function(req, res) {
             email: req.body.email,
             title: req.body.title,
             type: req.body.type,
-            length: req.body.length,
-            abstract: req.body.abstract,
+            //length: req.body.length,
+            //abstract: req.body.abstract,
         }, {
             where: {
                 id: req.params.paper_id
