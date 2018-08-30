@@ -7,8 +7,8 @@ module.exports = {
         password: process.env.LOGIN_PASSWORD
     },
     email: {
-        name: "BioInformaticsGRX",
-        user: "bioinfgrx",
+        name: "MedInBio",
+        user: "medinbio",
         server: "interferencias.tech",
         password: process.env.MAIL_PASSWORD
     }
