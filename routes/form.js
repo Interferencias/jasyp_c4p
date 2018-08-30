@@ -3,12 +3,12 @@
 require("dotenv").config();
 
 var express = require("express");
-var router = express.Router();
+var fs = require("fs-extra");
 
 var models = require(__dirname + "/../lib/models");
 var transporter = require(__dirname + "/../lib/messenger");
 
-var fs = require("fs-extra");
+var router = express.Router();
 
 router.get("/", function(req, res, next) {
     res.send({

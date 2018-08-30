@@ -26,9 +26,9 @@
 						<th>
 							Tipo
 						</th>
-						<th>
+						<!--<th>
 							Duración
-						</th>
+						</th>-->
 						<th>
 							Paper
 						</th>
@@ -47,7 +47,7 @@
 								<%= paper.name %>
 							</td>
 							<td>
-								<a href="mailto:<%= paper.name %><<%= paper.email %>>?subject=Participación JASYP '18"> <%= paper.email %> </a>
+								<a href="mailto:<%= paper.name %><<%= paper.email %>>?subject=Participación MedInBio 2018"> <%= paper.email %> </a>
 							</td>
 							<td>
 								<%= paper.title %>
@@ -56,9 +56,10 @@
 								<% if (paper.type == "T") { %>
 									Charla
 									<% } else { %>
-										Taller
+										Póster
 										<% } %>
 							</td>
+							<!--
 							<td>
 								<% if (paper.length == "S") { %>
 									Corta
@@ -66,6 +67,7 @@
 										Larga
 										<% } %>
 							</td>
+						-->
 							<td>
 								<a href="/<%= app_name %>/uploads/<%= paper.file %>" target="_blank"><%= paper.file %></a>
 							</td>

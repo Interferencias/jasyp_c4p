@@ -1,9 +1,10 @@
 "use strict";
 
 var express = require("express");
-var router = express.Router();
 
 var config = require(__dirname + "/../config/sequelize");
+
+var router = express.Router();
 
 router.get("/", function(req, res, next) {
     res.render("pages/index", {

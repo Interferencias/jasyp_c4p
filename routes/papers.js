@@ -2,38 +2,17 @@
 
 require("dotenv").config();
 
-var models = require(__dirname + "/../lib/models");
-var transporter = require(__dirname + "/../lib/messenger");
-
 var express = require("express");
-const Json2csvParser = require("json2csv").Parser;
-
-var multer = require("multer");
-var fs = require("fs-extra");
-
-var router = express.Router();
+var fs = require("fs");
 
 var config = require(__dirname + "/../config/sequelize");
 
-var upload = multer({
-    storage: multer.diskStorage({
-        destination: (req, file, callback) => {
-            var path = "public/uploads/";
-            fs.mkdirsSync(path);
-            callback(null, path);
-        }
-    }),
-    limits: {
-        fileSize: config.max_size
-    },
-    fileFilter: function(req, file, callback) {
-        if (file.mimetype !== "application/pdf") {
-            callback(null, false);
-        } else {
-            callback(null, true);
-        }
-    }
-});
+var models = require(__dirname + "/../lib/models");
+var transporter = require(__dirname + "/../lib/messenger");
+var upload = require(__dirname + "/../lib/files");
+
+var router = express.Router();
+const Json2csvParser = require("json2csv").Parser;
 
 router.get("/create", function(req, res, next) {
     res.render("pages/create", {
@@ -73,10 +52,10 @@ router.get("/:paper_id", function(req, res) {
 
 router.get("/download", function(req, res, next) {
     models.Paper.findAll({
-        attributes: ["id", "name", "email", "title", "type", "file"],
+        attributes: ["id", "name", "email", "title", "type"],
         raw: true
     }).then(function(papers) {
-        const fields = ["id", "name", "email", "title", "type", "file"];
+        const fields = ["id", "name", "email", "title", "type"];
         const json2csvParser = new Json2csvParser({
             fields
         });

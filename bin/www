@@ -4,12 +4,12 @@
 
 require("dotenv").config();
 
+var debug = require("debug")("interferencias-c4p:www");
+var http = require("http");
+
 // Module dependencies.
 var app = require(__dirname + "/../app");
 var models = require(__dirname + "/../lib/models");
-
-var debug = require("debug")("interferencias-c4p:www");
-var http = require("http");
 
 // Get port from environment and store in Express.
 var port = normalizePort(process.env.PORT || "4000");

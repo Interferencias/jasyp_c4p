@@ -1,11 +1,14 @@
 "use strict";
 
 var express = require("express");
-var path = require("path");
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
 var favicon = require("serve-favicon");
 var logger = require("morgan");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
+var path = require("path");
+
+var config = require(__dirname + "/config/sequelize");
+var auth = require(__dirname + "/lib/auth");
 
 var blank = require(__dirname + "/routes/blank");
 var index = require(__dirname + "/routes/index");
@@ -13,10 +16,6 @@ var papers = require(__dirname + "/routes/papers");
 var form = require(__dirname + "/routes/form");
 
 var app = express();
-
-var auth = require(__dirname + "/lib/auth");
-
-var config = require(__dirname + "/config/sequelize");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
