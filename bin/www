@@ -2,13 +2,13 @@
 
 "use strict";
 
-require('dotenv').config();
+require("dotenv").config();
 
 // Module dependencies.
 var app = require(__dirname + "/../app");
 var models = require(__dirname + "/../lib/models");
 
-var debug = require("debug")("jasyp-c4p:www");
+var debug = require("debug")("interferencias-c4p:www");
 var http = require("http");
 
 // Get port from environment and store in Express.

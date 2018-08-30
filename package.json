@@ -1,8 +1,8 @@
 {
-    "name": "jasyp-c4p",
+    "name": "interferencias-c4p",
     "version": "0.0.1",
     "author": "Germán Martínez <germaaan@protonmail.com>",
-    "description": "Aplicación para gestionar las solicitudes para las JASYP",
+    "description": "Aplicación para gestionar call for papers",
     "license": "GPL-3.0",
     "repository": {
         "type": "git",
@@ -11,7 +11,7 @@
     "bugs": {
         "url": "https://github.com/Interferencias/jasyp_c4p/issues"
     },
-    "homepage": "https://interferencias.tech/jasyp/",
+    "homepage": "https://interferencias.tech/",
     "main": "bin/www",
     "os": "linux",
     "arch": "x64",
@@ -40,9 +40,9 @@
         "sqlite3": "^4.0.2"
     },
     "devDependencies": {
-        "js-beautify": "^1.7.5",
+        "js-beautify": "^1.8.1",
         "jshint": "^2.9.6",
-        "nodemon": "^1.14.11",
+        "nodemon": "^1.18.4",
         "npm-check": "^5.8.0",
         "pm2": "^3.0.4"
     },
