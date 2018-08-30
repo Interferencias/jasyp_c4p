@@ -33,7 +33,7 @@ router.get("/download", function(req, res, next) {
             } else {
                 values[index].type = "Poster";
             }
-            values[index].file = "https://interferencias.tech/medinbio/uploads/" + values[index].file + ".pdf";
+            values[index].file = "https://interferencias.tech/medinbio/uploads/" + values[index].file;
         });
 
         const fields = ["id", "name", "email", "title", "type", "file"];
