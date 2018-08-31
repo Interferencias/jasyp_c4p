@@ -3,7 +3,7 @@
 module.exports = {
     app_name: "medinbio",
     event_name: "MedInBio C4P",
-    max_size: 19892827,
+    max_size: 20971520,
     development: {
         dialect: "sqlite",
         storage: "./db.development.sqlite"
