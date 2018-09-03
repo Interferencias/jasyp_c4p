@@ -8,8 +8,9 @@ module.exports = {
     },
     email: {
         name: "MedInBio",
-        user: "medinbio",
-        server: "interferencias.tech",
+        user: "cfp",
+        smtp: "mail",
+        server: "medinbio.es",
         password: process.env.MAIL_PASSWORD
     }
 };
