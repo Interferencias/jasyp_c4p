@@ -9,7 +9,7 @@ module.exports = {
     email: {
         name: "MedInBio",
         user: "cfp",
-        smtp: "smtp",
+        smtp: "mail",
         server: "medinbio.es",
         password: process.env.MAIL_PASSWORD
     }
